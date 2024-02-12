@@ -43,7 +43,7 @@ void* tinymm_malloc(unsigned long len) {
     return 0;
   }
   tinymm_bufs[tinymm_nblocks].size = len;
-  char* res = tinymm_memtop + tinymm_pbuf + len;
+  char* res = tinymm_memtop + tinymm_pbuf;
   tinymm_bufs[tinymm_nblocks].p = res;
   tinymm_nblocks++;
   tinymm_pbuf += len;

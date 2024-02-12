@@ -3,12 +3,12 @@
 
 void set(char* p, int len) {
   for (int i = 0; i < len; i++) {
-    p[i] = i;
+    p[i] = i % 251;
   }
 }
 int test(char* p, int len) {
   for (int i = 0; i < len; i++) {
-    if (p[i] != (char)(i & 0xff)) {
+    if (p[i] != (char)(i % 251)) {
       return 0;
     }
   }
@@ -22,7 +22,7 @@ int main() {
   tinymm_init(buf, SIZE, 100);
   const int N = 100;
   const int M = 100;
-  void** pp[M];
+  void* pp[M];
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < M; j++) {
       int len = 1024 << ((1 + j) % 3);
@@ -43,5 +43,6 @@ int main() {
     }
     //printf("%d\n", i);
   }
+
   return 0;
 }
